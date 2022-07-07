@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://kit.fontawesome.com/3272150344.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h1>HOME</h1>
+        <section class="noteSection">
+            <h2>TO DO:</h2>
+            <ul id="toDoItems">
+                <% for (let i = 0; i<data.length; i++){ %>
+                    <li class="note">
+                        <a><h3 class ="<%= String(data[i].complete) %>" ><%= data[i].note %></h3></a><a><i class="fa-solid fa-trash"></i></a>
+                    </li>
+                <% } %>
+            </ul>
+        </section>
+        <section class="addNoteSection" >
+            <form action="/" method="post">
+                <input type="text" name="note">
+                <button type="submit">Add Item</button>
+            </form>
+        </section>
+        <script src="js/main.js"></script>
+    </body>
+</html>

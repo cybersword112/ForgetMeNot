@@ -1,0 +1,9 @@
+.note>a >.true{
+    text-decoration: line-through;
+    color:gray
+}
+
+.note>a >.false {
+    text-decoration: none;
+    color: black;
+}
