@@ -12,21 +12,8 @@
     </head>
     <body>
         <h1>HOME</h1>
-        <section class="noteSection">
-            <h2>TO DO:</h2>
-            <ul id="toDoItems">
-                <% for (let i = 0; i<data.length; i++){ %>
-                    <li class="note">
-                        <a><h3 class ="<%= String(data[i].complete) %>" ><%= data[i].note %></h3></a><a><i class="fa-solid fa-trash"></i></a>
-                    </li>
-                <% } %>
-            </ul>
-        </section>
-        <section class="addNoteSection" >
-            <form action="/" method="post">
-                <input type="text" name="note">
-                <button type="submit">Add Item</button>
-            </form>
+        <section class="linksSection">
+            <a href ="/notes"><h2>Notes Page</h2></a>
         </section>
         <script src="js/main.js"></script>
     </body>

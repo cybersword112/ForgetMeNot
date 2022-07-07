@@ -7,17 +7,26 @@ trash.forEach((item)=>{item.addEventListener('click',deleteNote)})
 
 async function toggle(evt){
     try{
-        let note = evt.target.innerText
-        let complete = evt.target.getAttribute('class')
-        console.log(note,complete)
-        await fetch('/',{
-            method:'PUT',
-            headers:{'Content-Type': 'application/json'},
-            body:JSON.stringify({
-                note:note,
-                complete:complete,
+        const id = evt.target.parentNode.parentNode.dataset.id
+        let complete = evt.target.parentNode.parentNode.getAttribute('class').split(' ')[1]
+        if(complete === 'false'){
+            console.log('complete false')
+            await fetch('/notes/markNoteComplete',{
+                method:'PUT',
+                headers:{'Content-Type': 'application/json'},
+                body:JSON.stringify({
+                    id:id,
+                })
             })
-        })
+        }else{
+            await fetch('/notes/markNoteIncomplete',{
+                method:'PUT',
+                headers:{'Content-Type': 'application/json'},
+                body:JSON.stringify({
+                    id:id,
+                })
+            })
+        }
         location.reload()
     }catch(err){
         console.log(err)
@@ -26,13 +35,12 @@ async function toggle(evt){
 
 async function deleteNote(evt){
     try{
-        let note = evt.target.parentNode.previousElementSibling.innerText
-        console.log(note)
-        await fetch('/',{
+        let id = evt.target.parentNode.parentNode.dataset.id
+        await fetch('/notes',{
             method:'DELETE',
             headers:{'Content-Type': 'application/json'},
             body:JSON.stringify({
-                note:note,
+                id:id,
             })
         })
         location.reload()
