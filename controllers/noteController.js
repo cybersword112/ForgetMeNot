@@ -3,11 +3,14 @@ const Note = require('../models/noteModel')
 module.exports = {
     getNotes: async (req,res)=>{
         try{
-            let notes = await Note.find()
-            let itemsLeft = await Note.countDocuments({completed:false})
+            //grab logged in user todos
+            let notes = await Note.find({microsoftId:req.user.microsoftId})
+            //count logged in user notes not marked complete
+            let itemsLeft = await Note.countDocuments({microsoftId:req.user.microsoftId,completed:false})
             res.render('notes.ejs',{
                 notes:notes,
                 itemsLeft:itemsLeft,
+                user:req.user
             })
         }catch(err){
             console.log(err)
@@ -19,6 +22,7 @@ module.exports = {
             await Note.create({
                 note,
                 complete:false,
+                microsoftId:req.user.microsoftId,
             })
             res.redirect('/notes')
         }catch(err){

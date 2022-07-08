@@ -21,7 +21,7 @@
                     </li>
                 <% }) %>
             </ul>
-            <h3>Notes left to do: <%= itemsLeft%></h3>
+            <h3><%= user.displayName %> has <%= itemsLeft%> notes left to do. </h3>
         </section>
         <section class="addNoteSection" >
             <form action="/notes" method="post">

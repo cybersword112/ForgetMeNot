@@ -10,6 +10,10 @@ const NoteSchema = new mongoose.Schema({
         required:true,
         default:false,
     },
+    microsoftId: {
+        type: String,
+        required: true
+    },
 })
 
 module.exports = mongoose.model('Note',NoteSchema)
