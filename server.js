@@ -34,8 +34,6 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
-
-
 app.use('/',homeRoutes)
 app.use('/auth',authRoutes)
 app.use('/notes',noteRoutes)
